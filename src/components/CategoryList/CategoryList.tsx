@@ -11,9 +11,10 @@ import {
 interface Props {
   categories: ICategory[];
   articles: IArticle[];
+  length?: number;
 }
 
-const CategoryList = ({ categories, articles }: Props) => {
+const CategoryList = ({ categories, articles, length }: Props) => {
   const router = useRouter();
 
   return (
@@ -23,7 +24,7 @@ const CategoryList = ({ categories, articles }: Props) => {
           <CategoryLink href={`/category/${category.slug}`} onClick={() => router.push('/category/[slug]', `/category/${category.slug}`, { shallow: true })} title={category.category_name}>
             {category.category_name}
           </CategoryLink>
-          <ArticleList category={category} articles={articles} />
+          <ArticleList category={category} articles={articles} length={length} />
         </CategoryWrapper>
 
       ))}

@@ -18,7 +18,7 @@ const Home = ({ categories, articles, presentation }: Props) => {
   return (
     <>
       <PresentationWrapper dangerouslySetInnerHTML={{ __html: renderRichText(presentation.presentation) }}/>
-      <CategoryList categories={categories} articles={articles} />
+      <CategoryList categories={categories} articles={articles} length={3} />
       <PostalCodeForm />
     </>
   )
