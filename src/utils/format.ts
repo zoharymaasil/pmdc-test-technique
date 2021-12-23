@@ -21,3 +21,12 @@ export const renderRichText = (data: any[]) => {
   
   return result;
 };
+export const getDateHours = (strDate: string) => {
+  const date = strDate.substring(0, 10);
+  const hours = strDate.substring(11, 19);
+
+  const aDate = date.split('-');
+  const aHours = hours.split(':');
+
+  return { dates: aDate, hours: aHours };
+};

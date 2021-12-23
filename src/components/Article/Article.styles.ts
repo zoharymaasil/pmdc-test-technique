@@ -18,7 +18,7 @@ export const ArticleCard = styled.a`
 
 export const ArticleContent = styled.div`
   min-width: 320px;
-  min-height: 380px;
+  min-height: 430px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -66,5 +66,22 @@ export const BadgeDate = styled.span`
       font-size: 30px;
       font-wight: 600;
     }
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  width: 100%;
+  height: 250px;
+  
+  span {
+    width: 100% !important;
+    height: inherit !important;
+    position: relative !important;
+  }
+
+  .articleImg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;  
   }
 `;

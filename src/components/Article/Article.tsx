@@ -1,13 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { getDateHours } from 'utils/format';
+import { months } from 'utils/constants';
 
 import {
   ArticleCard,
   BadgeDate,
   ArticleContent,
+  ImageWrapper,
 } from './Article.styles';
-import { months } from 'utils/constants';
+
 
 interface IArticle {
   article_category: string;
@@ -31,28 +34,25 @@ interface Props {
 
 const Article = ({ data }: Props) => {
   const router = useRouter();
-
-  const date = data.first_publication_date.substring(0, 10);
-  const hours = data.first_publication_date.substring(11, 19);
-
-  const aDate = date.split('-');
-  const aHours = hours.split(':');
+  const formattedDates = getDateHours(data.first_publication_date);
 
   return (
     <ArticleCard href={`/article/${data.slug}`} onClick={() => router.push('/article/[slug]', `/article/${data.slug}`, { shallow: true })}>
       <ArticleContent>
-        <Image
-          src={data.article_img.url}
-          alt={data.article_img.alt}
-          width={320}
-          height={200}
-        />
+        <ImageWrapper>
+          <Image
+            src={data.article_img.url}
+            alt={data.article_img.alt}
+            layout='fill'
+            className='articleImg'
+          />
+        </ImageWrapper>
         <p className="pTitle">{data.article_title}</p>
         <p className="pDescription">{`${data.article_description.substring(0, 150)}...`}</p>
         <BadgeDate>
-          <p className='lblDate'>{aDate[2]}</p>
-          <p>{months[Number(aDate[1]) - 1]}</p>
-          <p>{`${aHours[1]}:${aHours[2]}`}</p>
+          <p className='lblDate'>{formattedDates.dates[2]}</p>
+          <p>{months[Number(formattedDates.dates[1]) - 1]}</p>
+          <p>{`${formattedDates.hours[1]}:${formattedDates.hours[2]}`}</p>
         </BadgeDate>
       </ArticleContent>
     </ArticleCard>

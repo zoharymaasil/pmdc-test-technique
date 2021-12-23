@@ -4,4 +4,5 @@ export const COLORS = {
   danger: '#F2495E',
   light: "#FFF",
   grey: '#F9F9F9',
+  greyText: '#B9B9B9',
 };
