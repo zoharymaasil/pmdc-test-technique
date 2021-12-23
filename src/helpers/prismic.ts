@@ -26,8 +26,7 @@ export const getSingleFromPrismic = async (id: string, options?: any) => {
   if (cache[id]) return cache[id];
   
   const doc = await client.getSingle(id, options);
-  // setPrismicCache(id, doc);
-  console.debug(doc);
+  setPrismicCache(id, doc);
   return doc.data;
 };
 

@@ -2,6 +2,7 @@ import { getFromPrismic, getSingleFromPrismic, formatPrismicDoc } from 'helpers/
 import { renderRichText } from 'utils/format';
 
 import CategoryList from 'components/CategoryList/CategoryList';
+import PostalCodeForm from 'components/PostalCodeForm/PostalCodeForm';
 
 interface Props {
   presentation: any;
@@ -15,6 +16,7 @@ const Home = ({ categories, articles, presentation }: Props) => {
     <>
       <div dangerouslySetInnerHTML={{ __html: renderRichText(presentation.presentation) }}/>
       <CategoryList categories={formatPrismicDoc(categories)} articles={formatPrismicDoc(articles)} />
+      <PostalCodeForm />
     </>
   )
 }
