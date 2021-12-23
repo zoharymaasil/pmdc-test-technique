@@ -48,7 +48,6 @@ export function usePrismic(id: string) {
 
 export const formatPrismicDoc = (doc: any) => {
   const result: any[] = [];
-
   doc.map((item: any) => {
     result.push({
       ...item.data, 

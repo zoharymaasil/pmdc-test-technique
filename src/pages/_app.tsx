@@ -2,14 +2,14 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
-import AppHeader from 'components/AppHeader';
-import AppFooter from 'components/AppFooter';
+import AppHeader from 'components/Layout/AppHeader';
+import AppFooter from 'components/Layout/AppFooter';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Accueil</title>
+        <title>Le Blog</title>
         <meta name="description" content="Test technique SSG" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

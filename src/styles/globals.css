@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+main {
+  padding: 20px;
+}
+
+@media (min-width: 992px) {
+  main { padding: 50px; }
+}

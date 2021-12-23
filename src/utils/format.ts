@@ -7,7 +7,7 @@ interface ITag {
 export const renderRichText = (data: any[]) => {
   let result = '';
   
-  data.map((tag: ITag) => {
+  data && data.map((tag: ITag) => {
     switch (tag.type) {
       case 'heading1': result += `<h1>${tag.text}</h1>`; break;
       case 'heading2': result += `<h2>${tag.text}</h2>`; break;
