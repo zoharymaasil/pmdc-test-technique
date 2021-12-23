@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Test technique</title>
+        <title>Accueil</title>
         <meta name="description" content="Test technique SSG" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
