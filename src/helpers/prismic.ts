@@ -1,6 +1,5 @@
 import Prismic from "@prismicio/client";
 import { useEffect, useMemo, useState } from "react";
-import { resourceLimits } from "worker_threads";
 
 // Prismic API endpoint
 export const apiEndpoint = process.env.PRISMIC_URL || '';
@@ -21,6 +20,15 @@ export const getFromPrismic = async (id: string, options?: any) => {
   const doc = await client.query([Prismic.Predicates.at("document.type", id)], options);
   setPrismicCache(id, doc.results);
   return doc.results;
+};
+
+export const getSingleFromPrismic = async (id: string, options?: any) => {
+  if (cache[id]) return cache[id];
+  
+  const doc = await client.getSingle(id, options);
+  // setPrismicCache(id, doc);
+  console.debug(doc);
+  return doc.data;
 };
 
 // utilisée dans les composants pour utiliser le cache existant

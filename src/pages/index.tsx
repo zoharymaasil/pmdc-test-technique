@@ -1,4 +1,4 @@
-import { getFromPrismic, formatPrismicDoc } from 'helpers/prismic';
+import { getFromPrismic, getSingleFromPrismic, formatPrismicDoc } from 'helpers/prismic';
 import { renderRichText } from 'utils/format';
 
 import CategoryList from 'components/CategoryList/CategoryList';
@@ -13,7 +13,7 @@ const Home = ({ categories, articles, presentation }: Props) => {
   // console.debug({ categories, articles, presentation });
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: renderRichText(presentation[0].data.presentation) }}/>
+      <div dangerouslySetInnerHTML={{ __html: renderRichText(presentation.presentation) }}/>
       <CategoryList categories={formatPrismicDoc(categories)} articles={formatPrismicDoc(articles)} />
     </>
   )
@@ -22,13 +22,17 @@ const Home = ({ categories, articles, presentation }: Props) => {
 export default Home;
 
 export async function getStaticProps() {
-  const presentation = await getFromPrismic('presentation', { lang: "*" });
-  const categories = await getFromPrismic('categorie', { lang: "*" });
-  const articles = await getFromPrismic('article', { 
-    orderings: '[document.last_publication_date]',
+  const presentation = await getSingleFromPrismic('presentation', { lang: "*" });
+  
+  const rawCategories = await getFromPrismic('categorie', { lang: "*" });
+  const categories = formatPrismicDoc(rawCategories);
+
+  const rawArticles = await getFromPrismic('article', { 
+    orderings: '[document.first_publication_date]',
     lang: '*' 
   });
-  
+  const articles = formatPrismicDoc(rawArticles);
+
   return {
     props: {
       presentation,
