@@ -33,4 +33,5 @@ export const FooterWrapper = styled.footer`
   align-items: center;
   justify-content: center;
   font-weight: 600;
+  padding: 20px;
 `;

@@ -23,17 +23,16 @@ export const ArticlePageWrapper = styled.div`
 
 export const ImageWrapper = styled.div`
   width: 90%;
-  height: auto;
+  height: 350px;
   margin: 40px auto 65px;
   
   @media (min-width: 922px) {
     width: 720px;
-    height: 350px;
   }
 
   span {
     width: 100% !important;
-    height: 100% !important;
+    height: inherit !important;
     position: relative !important;
   }
 

@@ -25,9 +25,12 @@ export const FormInput = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 305px;
+  width: auto;
   margin: 0 auto 20px;
   
+  @media (min-width: 320px) {
+    width: 305px;
+  }
 
   label {
     margin-bottom: 10px;

@@ -8,22 +8,32 @@ export const ArticleWrapper = styled.div`
 
 export const ArticleCard = styled.a`
   margin: 60px 0;
-  padding: 0 20px;
+  padding: 0;
   
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
+    width: calc(100% / 2);
+    padding: 0 20px;
+  }
+
+  @media (min-width: 1200px) {
     width: calc(100% / 3);
+    padding: 0 20px;
   }
 
 `;
 
 export const ArticleContent = styled.div`
-  min-width: 320px;
+  min-width: auto;
   min-height: 430px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
   box-shadow: 0px 3px 6px #00000029;
+
+  @media (min-width: 320px) {
+    min-width: 320px;
+  }
 
   .p {
     &Title {
