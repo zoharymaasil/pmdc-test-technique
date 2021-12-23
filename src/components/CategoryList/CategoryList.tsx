@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-
+import { ICategory, IArticle } from 'utils/types';
 import ArticleList from 'components/Article/ArticleList';
 
 import {
@@ -9,8 +9,8 @@ import {
 } from './CategoryList.styles';
 
 interface Props {
-  categories: any;
-  articles: any;
+  categories: ICategory[];
+  articles: IArticle[];
 }
 
 const CategoryList = ({ categories, articles }: Props) => {
@@ -18,7 +18,7 @@ const CategoryList = ({ categories, articles }: Props) => {
 
   return (
     <>
-      {categories.map((category: any) => (
+      {categories.map((category: ICategory) => (
         <CategoryWrapper key={category.id}>
           <CategoryLink href={`/category/${category.slug}`} onClick={() => router.push('/category/[slug]', `/category/${category.slug}`, { shallow: true })} title={category.category_name}>
             {category.category_name}

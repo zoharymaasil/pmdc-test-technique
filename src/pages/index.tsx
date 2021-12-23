@@ -1,3 +1,5 @@
+import React from 'react';
+import { ICategory, IArticle } from 'utils/types';
 import { getFromPrismic, getSingleFromPrismic, formatPrismicDoc } from 'helpers/prismic';
 import { renderRichText } from 'utils/format';
 
@@ -8,8 +10,8 @@ import { PresentationWrapper } from 'styled/Home.styles';
 
 interface Props {
   presentation: any;
-  categories: any;
-  articles: any;
+  categories: ICategory[];
+  articles: IArticle[];
 }
 
 const Home = ({ categories, articles, presentation }: Props) => {

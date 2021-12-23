@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { getDateHours } from 'utils/format';
 import { months } from 'utils/constants';
+import { IArticle } from 'utils/types';
 
 import {
   ArticleCard,
@@ -11,22 +12,6 @@ import {
   ImageWrapper,
 } from './Article.styles';
 
-
-interface IArticle {
-  article_category: string;
-  article_description: string;
-  article_title: string;
-  article_id: string;
-  first_publication_date: string;
-  last_publication_date: string;
-  slug: string;
-  article_img: {
-    alt: string;
-    copyright: string | null;
-    dimensions: { width: number; height: number; };
-    url: string;
-  }
-}
 
 interface Props {
   data: IArticle;

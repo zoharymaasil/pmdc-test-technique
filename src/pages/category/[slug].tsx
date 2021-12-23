@@ -1,20 +1,21 @@
 import React from 'react';
 import Head from 'next/head';
+import { ICategory, IArticle } from 'utils/types';
 import { getFromPrismic, formatPrismicDoc } from 'helpers/prismic';
 import { CategoryTitle } from 'components/CategoryList/CategoryList.styles';
 import ArticleList from 'components/Article/ArticleList';
 
 interface Props {
-  category: any;
-  articles: any;
+  category: ICategory;
+  articles: IArticle[];
 }
 
 const CategoryPage = ({ category, articles }: Props) => {
   return (
     <>
-      <Head><title>{category[0].category_name}</title></Head>
-      <CategoryTitle>{`Catégorie : ${category[0].category_name}`}</CategoryTitle>
-      <ArticleList category={category[0]} articles={articles} />
+      <Head><title>{category.category_name}</title></Head>
+      <CategoryTitle>{`Catégorie : ${category.category_name}`}</CategoryTitle>
+      <ArticleList category={category} articles={articles} />
     </>
   )
 }
@@ -48,7 +49,8 @@ export async function getStaticProps({ params }: any) {
   const formattedCategories = formatPrismicDoc(rawCategories);
   const formattedArticles = formatPrismicDoc(rawArticles);
 
-  const category = formattedCategories.filter((cat: any) => cat.slug === slug);
+  let category = formattedCategories.filter((cat: any) => cat.slug === slug);
+  category = category.length > 0 ? category[0] : category;
   const articles = formattedArticles.filter((article: any) => article.article_category === slug);
   return {
     props: { category, articles },

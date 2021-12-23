@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
+import { ICategory, IArticle } from 'utils/types';
 import { getFromPrismic, formatPrismicDoc } from 'helpers/prismic';
 import CategoryList from 'components/CategoryList/CategoryList';
 
 export interface Props {
-  categories: any;
-  articles: any;
+  categories: ICategory[];
+  articles: IArticle[];
 }
 
 const CategoryPage = ({ categories, articles }: Props) => {
