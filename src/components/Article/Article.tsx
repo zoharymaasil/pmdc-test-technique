@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import {
   ArticleCard,
   BadgeDate,
+  ArticleContent,
 } from './Article.styles';
 import { months } from 'utils/constants';
 
@@ -39,19 +40,21 @@ const Article = ({ data }: Props) => {
 
   return (
     <ArticleCard href={`/article/${data.slug}`} onClick={() => router.push('/article/[slug]', `/article/${data.slug}`, { shallow: true })}>
-      <Image
-        src={data.article_img.url}
-        alt={data.article_img.alt}
-        width={320}
-        height={200}
-      />
-      <p className="pTitle">{data.article_title}</p>
-      <p className="pDescription">{`${data.article_description.substring(0, 150)}...`}</p>
-      <BadgeDate>
-        <p className='lblDate'>{aDate[2]}</p>
-        <p>{months[Number(aDate[1]) - 1]}</p>
-        <p>{`${aHours[1]}:${aHours[2]}`}</p>
-      </BadgeDate>
+      <ArticleContent>
+        <Image
+          src={data.article_img.url}
+          alt={data.article_img.alt}
+          width={320}
+          height={200}
+        />
+        <p className="pTitle">{data.article_title}</p>
+        <p className="pDescription">{`${data.article_description.substring(0, 150)}...`}</p>
+        <BadgeDate>
+          <p className='lblDate'>{aDate[2]}</p>
+          <p>{months[Number(aDate[1]) - 1]}</p>
+          <p>{`${aHours[1]}:${aHours[2]}`}</p>
+        </BadgeDate>
+      </ArticleContent>
     </ArticleCard>
   );
 };

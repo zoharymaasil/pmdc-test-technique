@@ -12,7 +12,8 @@ export const CategoryLink = styled.a`
   cursor: pointer;
 `;
 
-export const ArticleWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+export const CategoryTitle = styled.h1`
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0 0 -34px;
 `;

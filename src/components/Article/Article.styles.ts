@@ -1,14 +1,28 @@
 import styled from "styled-components";
 import { COLORS } from 'styled/theme';
 
+export const ArticleWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 export const ArticleCard = styled.a`
-  margin: 60px 20px;
-  width: 320px;
+  margin: 60px 0;
+  padding: 0 20px;
+  
+  @media (min-width: 992px) {
+    width: calc(100% / 3);
+  }
+
+`;
+
+export const ArticleContent = styled.div`
+  min-width: 320px;
+  min-height: 380px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
-
   box-shadow: 0px 3px 6px #00000029;
 
   .p {

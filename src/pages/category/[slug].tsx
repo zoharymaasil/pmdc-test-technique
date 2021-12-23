@@ -1,4 +1,8 @@
+import React from 'react';
+import Head from 'next/head';
 import { getFromPrismic, formatPrismicDoc } from 'helpers/prismic';
+import { CategoryTitle } from 'components/CategoryList/CategoryList.styles';
+import ArticleList from 'components/Article/ArticleList';
 
 interface Props {
   category: any;
@@ -6,10 +10,11 @@ interface Props {
 }
 
 const CategoryPage = ({ category, articles }: Props) => {
-  console.debug({category, articles});
   return (
     <>
-      <p>CategoryPage</p>
+      <Head><title>{category[0].category_name}</title></Head>
+      <CategoryTitle>{`Catégorie : ${category[0].category_name}`}</CategoryTitle>
+      <ArticleList category={category[0]} articles={articles} />
     </>
   )
 }
