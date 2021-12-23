@@ -13,7 +13,6 @@ interface Props {
 }
 
 const Home = ({ categories, articles, presentation }: Props) => {
-  // console.debug({ categories, articles, presentation });
   return (
     <>
       <PresentationWrapper dangerouslySetInnerHTML={{ __html: renderRichText(presentation.presentation) }}/>

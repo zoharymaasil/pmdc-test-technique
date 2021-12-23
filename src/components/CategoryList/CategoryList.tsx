@@ -1,8 +1,12 @@
 import React, { Fragment } from 'react';
+import { useRouter } from 'next/router';
+
+import Article from 'components/Article/Article';
 
 import {
   CategoryWrapper,
-  CategoryTitle,
+  CategoryLink,
+  ArticleWrapper,
 } from './CategoryList.styles';
 
 interface Props {
@@ -11,26 +15,25 @@ interface Props {
 }
 
 const CategoryList = ({ categories, articles }: Props) => {
+  const router = useRouter();
 
-  console.debug(articles);
   return (
     <>
       {categories.map((category: any) => (
         <CategoryWrapper key={category.id}>
-          <CategoryTitle>{category.category_name}</CategoryTitle>
+          <CategoryLink href={`/category/${category.slug}`} onClick={() => router.push('/category/[slug]', `/category/${category.slug}`, { shallow: true })} title={category.category_name}>
+            {category.category_name}
+          </CategoryLink>
           {/* 
             filtrer les articles correspondant a la categorie
             trier par ordre de creation le plus recent
             iteration pour afficher les articles 
           */}
-          {articles.filter((article: any) => article.article_category === category.slug)
-            .sort((a: any, b: any) => a.first_publication_date < b.first_publication_date ? 1 : -1)
-            .map((articleItem: any) => (
-              <Fragment key={articleItem.id}>
-                <p>{articleItem.article_title}</p>
-                <p>{articleItem.first_publication_date}</p>
-              </Fragment>
-          ))}
+          <ArticleWrapper>
+            {articles.filter((article: any) => article.article_category === category.slug)
+              .sort((a: any, b: any) => a.first_publication_date < b.first_publication_date ? 1 : -1)
+              .map((articleItem: any) => <Article key={articleItem.id} data={articleItem} />)}
+          </ArticleWrapper>
         </CategoryWrapper>
 
       ))}
